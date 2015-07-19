@@ -40,7 +40,7 @@ module(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 						RegWr <= 1;
 						ALUSrc1 <= 0;
 						ALUSrc2 <= 1;
-						ALUFun <=
+						ALUFun <= 000000;
 						Sign <= 1;
 						MemWr <= 0;
 						MemRd <= 1;
@@ -54,7 +54,7 @@ module(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 						RegWr <= 0;
 						ALUSrc1 <= 0;
 						ALUSrc2 <= 1;
-						ALUFun <=
+						ALUFun <= 000000;
 						Sign <= 1;
 						MemWr <= 1;
 						MemRd <= 0;
@@ -71,7 +71,7 @@ module(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 									RegWr <= 1;
 									ALUSrc1 <= 0;
 									ALUSrc2 <= 1;
-									ALUFun <=
+									ALUFun <= 000000;
 									Sign <= 1;
 									MemWr <= 0;
 									MemRd <= 0;
@@ -96,7 +96,7 @@ module(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 						RegWr <= 1;
 						ALUSrc1 <= 0;
 						ALUSrc2 <= 1;
-						ALUFun <=
+						ALUFun <= 000000;
 						Sign <= 1;
 						MemWr <= 0;
 						MemRd <= 0;
@@ -111,7 +111,7 @@ module(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 						RegWr <= 1;
 						ALUSrc1 <= 0;
 						ALUSrc2 <= 1;
-						ALUFun <=
+						ALUFun <= 000000;
 						Sign <= 1;
 						MemWr <= 0;
 						MemRd <= 0;
@@ -126,7 +126,7 @@ module(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 						RegWr <= 1;
 						ALUSrc1 <= 0;
 						ALUSrc2 <= 1;
-						ALUFun <=
+						ALUFun <= 011000;
 						Sign <= 0;
 						MemWr <= 0;
 						MemRd <= 0;
@@ -141,7 +141,7 @@ module(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 						RegWr <= 1;
 						ALUSrc1 <= 0;
 						ALUSrc2 <= 1;
-						ALUFun <=
+						ALUFun <= 110101;
 						Sign <= 1;
 						MemWr <= 0;
 						MemRd <= 0;
@@ -156,7 +156,7 @@ module(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 						RegWr <= 1;
 						ALUSrc1 <= 0;
 						ALUSrc2 <= 1;
-						ALUFun <=
+						ALUFun <= 110101;
 						Sign <= 0;
 						MemWr <= 0;
 						MemRd <= 0;
@@ -168,7 +168,6 @@ module(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 					begin
 						PCSrc <= 3'b010;
 						RegWr <= 0;
-						ALUFun <=
 						MemWr <= 0;
 						MemRd <= 0;
 					end
@@ -177,7 +176,6 @@ module(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 						PCSrc <= 3'b010;
 						RegDst <= 2'b10;
 						RegWr <= 1;
-						ALUFun <=
 						MemWr <= 0;
 						MemRd <= 0;
 						MemToReg <= 2'b10;
@@ -186,12 +184,17 @@ module(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 					begin
 						PCSrc <= 3'b001;
 						RegWr <= 0;
+						ALUFun <= 110011;
 						MemWr <= 0;
 						MemRd <= 0;
 					end
 				6'h05: PCSrc <= 3'b001;	//bne
 					begin
-						
+						PCSrc <= 3'b001;
+						RegWr <= 0;
+						ALUFun <= 110001;
+						MemWr <= 0;
+						MemRd <= 0;
 					end
 				6'h06: 
 					begin
@@ -200,6 +203,7 @@ module(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 								begin
 									PCSrc <= 3'b001;
 									RegWr <= 0;
+									ALUFun <= 111101;
 									MemWr <= 0;
 									MemRd <= 0;
 								end
@@ -221,6 +225,7 @@ module(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 								begin
 									PCSrc <= 3'b001;
 									RegWr <= 0;
+									ALUFun <= 111111;
 									MemWr <= 0;
 									MemRd <= 0;
 								end
@@ -242,6 +247,7 @@ module(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 								begin
 									PCSrc <= 3'b001;
 									RegWr <= 0;
+									ALUFun <= 111001;
 									MemWr <= 0;
 									MemRd <= 0;
 								end
@@ -269,7 +275,7 @@ module(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 												RegWr <= 1;
 												ALUSrc1 <= 0;
 												ALUSrc2 <= 0;
-												ALUFun <=
+												ALUFun <= 000000;
 												Sign <= 1;
 												MemWr <= 0;
 												MemRd <= 0;
@@ -296,7 +302,7 @@ module(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 												RegWr <= 1;
 												ALUSrc1 <= 0;
 												ALUSrc2 <= 0;
-												ALUFun <=
+												ALUFun <= 000000;
 												Sign <= 1;
 												MemWr <= 0;
 												MemRd <= 0;
@@ -323,7 +329,7 @@ module(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 												RegWr <= 1;
 												ALUSrc1 <= 0;
 												ALUSrc2 <= 0;
-												ALUFun <=
+												ALUFun <= 000001;
 												Sign <= 1;
 												MemWr <= 0;
 												MemRd <= 0;
@@ -350,7 +356,7 @@ module(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 												RegWr <= 1;
 												ALUSrc1 <= 0;
 												ALUSrc2 <= 0;
-												ALUFun <=
+												ALUFun <= 000001;
 												Sign <= 0;
 												MemWr <= 0;
 												MemRd <= 0;
@@ -377,7 +383,7 @@ module(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 												RegWr <= 1;
 												ALUSrc1 <= 0;
 												ALUSrc2 <= 0;
-												ALUFun <=
+												ALUFun <= 011000;
 												Sign <= 0;
 												MemWr <= 0;
 												MemRd <= 0;
@@ -404,7 +410,7 @@ module(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 												RegWr <= 1;
 												ALUSrc1 <= 0;
 												ALUSrc2 <= 0;
-												ALUFun <=
+												ALUFun <= 011110;
 												Sign <= 0;
 												MemWr <= 0;
 												MemRd <= 0;
@@ -431,7 +437,7 @@ module(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 												RegWr <= 1;
 												ALUSrc1 <= 0;
 												ALUSrc2 <= 0;
-												ALUFun <=
+												ALUFun <= 010110;
 												Sign <= 0;
 												MemWr <= 0;
 												MemRd <= 0;
@@ -458,7 +464,7 @@ module(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 												RegWr <= 1;
 												ALUSrc1 <= 0;
 												ALUSrc2 <= 0;
-												ALUFun <=
+												ALUFun <= 010001;
 												Sign <= 0;
 												MemWr <= 0;
 												MemRd <= 0;
@@ -482,7 +488,7 @@ module(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 									RegWr <= 1;
 									ALUSrc1 <= 1;
 									ALUSrc2 <= 0;
-									ALUFun <=
+									ALUFun <= 100000;
 									Sign <= 0;
 									MemWr <= 0;
 									MemRd <= 0;
@@ -495,7 +501,7 @@ module(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 									RegWr <= 1;
 									ALUSrc1 <= 1;
 									ALUSrc2 <= 0;
-									ALUFun <=
+									ALUFun <= 100001
 									Sign <= 0;
 									MemWr <= 0;
 									MemRd <= 0;
@@ -508,7 +514,7 @@ module(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 									RegWr <= 1;
 									ALUSrc1 <= 1;
 									ALUSrc2 <= 0;
-									ALUFun <=
+									ALUFun <= 100011;
 									Sign <= 0;
 									MemWr <= 0;
 									MemRd <= 0;
@@ -524,7 +530,7 @@ module(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 												RegWr <= 1;
 												ALUSrc1 <= 0;
 												ALUSrc2 <= 0;
-												ALUFun <=
+												ALUFun <= 110101;
 												Sign <= 0;
 												MemWr <= 0;
 												MemRd <= 0;
@@ -551,7 +557,7 @@ module(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 												RegWr <= 1;
 												ALUSrc1 <= 0;
 												ALUSrc2 <= 0;
-												ALUFun <=
+												ALUFun <= 110101;
 												Sign <= 0;
 												MemWr <= 0;
 												MemRd <= 0;
