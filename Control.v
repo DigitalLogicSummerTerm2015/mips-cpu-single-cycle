@@ -134,7 +134,7 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 						EXTOp <= 1;
 						LUOp <= 0;
 					end
-				6'h0a: PCSrc <= 3'b000; //slti
+				6'h0a: //slti
 					begin
 						PCSrc <= 3'b000;
 						RegDst <= 2'b00;
@@ -149,7 +149,7 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 						EXTOp <= 1;
 						LUOp <= 0;
 					end
-				6'h0b: PCSrc <= 3'b000;	//sltiu
+				6'h0b:	//sltiu
 					begin
 						PCSrc <= 3'b000;
 						RegDst <= 2'b00;
@@ -188,7 +188,7 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 						MemWr <= 0;
 						MemRd <= 0;
 					end
-				6'h05: PCSrc <= 3'b001;	//bne
+				6'h05:	//bne
 					begin
 						PCSrc <= 3'b001;
 						RegWr <= 0;
@@ -501,7 +501,7 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 									RegWr <= 1;
 									ALUSrc1 <= 1;
 									ALUSrc2 <= 0;
-									ALUFun <= 100001
+									ALUFun <= 100001;
 									Sign <= 0;
 									MemWr <= 0;
 									MemRd <= 0;
@@ -596,25 +596,26 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 									endcase
 								end
 							6'h09:
-							begin
-								if((Instrcution[10:6] == 0) && (Instrcution[15:11] == 0))
-										//jalr
 								begin
-									PCSrc <= 3'b011;
-									RegDst <= 2'b00;
-									RegWr <= 1;
-									MemWr <= 0;
-									MemRd <= 0;
-									MemToReg <= 2'b10;
-								end
-								else	//XADR
-								begin
-									PCSrc <= 3'b101;	
-									RegDst <= 2'b11;
-									RegWr <= 1;
-									MemWr <= 0;
-									MemRd <= 0;
-									MemToReg <= 2'b10;
+									if((Instrcution[10:6] == 0) && (Instrcution[15:11] == 0))
+											//jalr
+									begin
+										PCSrc <= 3'b011;
+										RegDst <= 2'b00;
+										RegWr <= 1;
+										MemWr <= 0;
+										MemRd <= 0;
+										MemToReg <= 2'b10;
+									end
+									else	//XADR
+									begin
+										PCSrc <= 3'b101;	
+										RegDst <= 2'b11;
+										RegWr <= 1;
+										MemWr <= 0;
+										MemRd <= 0;
+										MemToReg <= 2'b10;
+									end
 								end
 							default:	//XADR
 								begin

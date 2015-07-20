@@ -1,6 +1,6 @@
 `timescale 1ns/1ps
 
-module CPU(led,digi,clk,reset)
+module CPU(led,digi,clk,reset);
 	output	[7:0]led;
 	output	[11:0]digi;
 	input	clk;
@@ -13,8 +13,8 @@ module CPU(led,digi,clk,reset)
 	parameter	XADR = 32'h80000008;
 	wire	[31:0]ALUOut;
 	wire	[2:0]PCSrc;
-	wire	PC;
-	wire	PCplus4;
+	wire	[31:0]PC;
+	wire	[31:0]PCplus4;
 	assign	PCplus4 = PC + 4;
 
 	ProgramCounter	programconuter(
@@ -53,7 +53,6 @@ module CPU(led,digi,clk,reset)
 	wire	[4:0]Rs;
 	assign	Rs[4:0] = Instruction[25:21];
 
-	wire	[2:0]PCSrc;
 	wire	[1:0]RegDst;
 	wire	RegWr;
 	wire	ALUSrc1;
@@ -69,20 +68,20 @@ module CPU(led,digi,clk,reset)
 
 	Control control(
 			//output
-			.PCSrc(PCSrc)
-			.RegDst(RegDst)
-			.RegWr(RegWr)
-			.ALUSrc1(ALUSrc1)
-			.ALUSrc2(ALUSrc2)
-			.ALUFun(ALUFun)
-			.Sign(Sign)
-			.MemWr(MemWr)
-			.MemRd(MemRd)
-			.MemToReg(MemToReg)
-			.EXTOp(EXTOp)
-			.LUOp(LUOp)
+			.PCSrc(PCSrc),
+			.RegDst(RegDst),
+			.RegWr(RegWr),
+			.ALUSrc1(ALUSrc1),
+			.ALUSrc2(ALUSrc2),
+			.ALUFun(ALUFun),
+			.Sign(Sign),
+			.MemWr(MemWr),
+			.MemRd(MemRd),
+			.MemToReg(MemToReg),
+			.EXTOp(EXTOp),
+			.LUOp(LUOp),
 			//input
-			.Instrcution(Instrcution)
+			.Instrcution(Instrcution),
 			.IRQ(IRQ)
 	);
 
@@ -105,7 +104,7 @@ module CPU(led,digi,clk,reset)
 			.data2(DatabusB),
 			.wr(RegWr),
 			.addr3(addrc),
-			.data3(writedata),
+			.data3(writedata)
 	);
 
 	wire	[31:0]EXTout;
@@ -118,7 +117,7 @@ module CPU(led,digi,clk,reset)
 		.Imm16(Imm16),
 		.PCplus4(PCplus4),
 		.EXTOp(EXTOp),
-		.LUOp(LUOp),
+		.LUOp(LUOp)
 	);
 
 	wire	[31:0]ALUin1;
@@ -131,7 +130,7 @@ module CPU(led,digi,clk,reset)
 		.A(ALUin1), 
 		.B(ALUin2), 
 		.ALUFun(ALUFun), 
-		.Sign(Sign), 
+		.Sign(Sign)
 	);
 
 	wire	[31:0]readdata;

@@ -1,6 +1,6 @@
 `timescale 1ns/1ps
 
-module ProgramCounter(PC,clk,reset,PCplus4,ConBA,JT,DatabusA,ILLOP,XADR,ALUOut,PCSrc)
+module ProgramCounter(PC,clk,reset,PCplus4,ConBA,JT,DatabusA,ILLOP,XADR,ALUOut,PCSrc);
 	output	[31:0]PC;
 	input	clk;
 	input	reset;
@@ -13,13 +13,13 @@ module ProgramCounter(PC,clk,reset,PCplus4,ConBA,JT,DatabusA,ILLOP,XADR,ALUOut,P
 	input	ALUOut;
 	input	[2:0]PCSrc;
 
-	reg		PC;
-	wire	addr1;
-	assign	addr1 <= (ALUOut == 0) ? PCplus4 : {PC[31],ConBA[30:0]};
+	reg		[31:0]PC;
+	wire	[31:0]addr1;
+	assign	addr1 = (ALUOut == 0) ? PCplus4 : {PC[31],ConBA[30:0]};
 	
 	always@(posedge clk or negedge reset)
 	begin
-		if(~reset) PC = 32'h80000000;
+		if(~reset) PC <= 32'h80000000;
 		else
 		begin
 			case (PCSrc[2:0])
