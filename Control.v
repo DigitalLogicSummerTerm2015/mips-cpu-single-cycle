@@ -28,7 +28,7 @@ module(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 			RegWr <= 1;
 			MemWr <= 0;
 			MemRd <= 0;
-			MemToReg <= 2'b10;
+			MemToReg <= 2'b11;
 		end
 		else
 		begin
