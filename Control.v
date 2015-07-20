@@ -185,6 +185,8 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 						PCSrc <= 3'b001;
 						RegWr <= 0;
 						ALUFun <= 110011;
+						ALUSrc1 <= 0;
+						ALUSrc2 <= 0;
 						MemWr <= 0;
 						MemRd <= 0;
 					end
@@ -193,6 +195,8 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 						PCSrc <= 3'b001;
 						RegWr <= 0;
 						ALUFun <= 110001;
+						ALUSrc1 <= 0;
+						ALUSrc2 <= 0;
 						MemWr <= 0;
 						MemRd <= 0;
 					end
@@ -204,6 +208,8 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 									PCSrc <= 3'b001;
 									RegWr <= 0;
 									ALUFun <= 111101;
+									ALUSrc1 <= 0;
+									ALUSrc2 <= 0;
 									MemWr <= 0;
 									MemRd <= 0;
 								end
@@ -226,6 +232,8 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 									PCSrc <= 3'b001;
 									RegWr <= 0;
 									ALUFun <= 111111;
+									ALUSrc1 <= 0;
+									ALUSrc2 <= 0;
 									MemWr <= 0;
 									MemRd <= 0;
 								end
@@ -248,6 +256,8 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 									PCSrc <= 3'b001;
 									RegWr <= 0;
 									ALUFun <= 111001;
+									ALUSrc1 <= 0;
+									ALUSrc2 <= 0;
 									MemWr <= 0;
 									MemRd <= 0;
 								end

@@ -89,6 +89,8 @@ module CPU(led,digi,clk,reset);
 	parameter	[4:0]Ra = 5'b11111;
 	wire	[31:0]DatabusB;
 	wire	[31:0]writedata;
+	wire	[31:0]addrb;
+	assign	addrb = (Instruction[31:26] == 6'h01) ? 0 : Rt;
 	wire	[4:0]addrc;
 	assign	addrc = (RegDst == 2'b00) ? Rd : 
 					(RegDst == 2'b01) ? Rt : 
@@ -100,7 +102,7 @@ module CPU(led,digi,clk,reset);
 			.clk(clk),
 			.addr1(Rs),
 			.data1(DatabusA),
-			.addr2(Rt),
+			.addr2(addrb),
 			.data2(DatabusB),
 			.wr(RegWr),
 			.addr3(addrc),
