@@ -16,7 +16,7 @@ module EXT(EXTout,ConBA,Imm16,PCplus4,EXTOp,LUOp)
 					{16'b0,Imm16[15:0]};
 
 	mux_2x1 mux2(EXTout,expend,upper,LUOp);
-
+	assign	upper EXTout = (LUOp == 0) ? expend : upper;
 	assign	ConBA = {expend[29:0],2'b00} + PCplus4;
 
 endmodule
