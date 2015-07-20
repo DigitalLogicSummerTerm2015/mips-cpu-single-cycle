@@ -1,6 +1,6 @@
 `timescale 1ns/1ps
 
-module(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
+module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 	MemWr,MemRd,MemToReg,EXTOp,LUOp,Instrcution,IRQ);
 	output reg	[2:0]PCSrc;
 	output reg	[1:0]RegDst;
