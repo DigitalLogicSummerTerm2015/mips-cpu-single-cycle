@@ -1,7 +1,7 @@
 `timescale 1ns/1ps
 
 module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
-	MemWr,MemRd,MemToReg,EXTOp,LUOp,Instrcution,IRQ);
+	MemWr,MemRd,MemToReg,EXTOp,LUOp,Instruction,IRQ);
 	output reg	[2:0]PCSrc;
 	output reg	[1:0]RegDst;
 	output reg	RegWr;
@@ -14,7 +14,7 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 	output reg	[1:0]MemToReg;
 	output reg	EXTOp;
 	output reg	LUOp;
-	input	[31:0]Instrcution;
+	input	[31:0]Instruction;
 	input	IRQ;
 
 	// branch unfinished
@@ -32,7 +32,7 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 		end
 		else
 		begin
-			case(Instrcution[31:26])
+			case(Instruction[31:26])
 				6'h23: 	//lw
 					begin
 						PCSrc <= 3'b000;
@@ -63,7 +63,7 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 					end
 				6'h0f:
 					begin
-						case(Instrcution[25:21])
+						case(Instruction[25:21])
 							5'h00:	//lui
 								begin
 									PCSrc <= 3'b000;
@@ -198,7 +198,7 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 					end
 				6'h06: 
 					begin
-						case(Instrcution[20:16])
+						case(Instruction[20:16])
 							5'h00:	//blez
 								begin
 									PCSrc <= 3'b001;
@@ -220,7 +220,7 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 					end
 				6'h07: 
 					begin
-						case(Instrcution[20:16])
+						case(Instruction[20:16])
 							5'h00:	//bgtz
 								begin
 									PCSrc <= 3'b001;
@@ -242,7 +242,7 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 					end
 				6'h01: 
 					begin
-						case(Instrcution[20:16])
+						case(Instruction[20:16])
 							5'h01:	//bgez
 								begin
 									PCSrc <= 3'b001;
@@ -264,10 +264,10 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 					end
 				6'h00:
 					begin
-						case(Instrcution[5:0])
+						case(Instruction[5:0])
 							6'h20:
 								begin
-									case(Instrcution[10:6])
+									case(Instruction[10:6])
 										5'h00:	//add
 											begin
 												PCSrc <= 3'b000;
@@ -294,7 +294,7 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 								end
 							6'h21:
 								begin
-									case(Instrcution[10:6])
+									case(Instruction[10:6])
 										5'h00:	//addu
 											begin
 												PCSrc <= 3'b000;
@@ -321,7 +321,7 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 								end
 							6'h22:
 								begin
-									case(Instrcution[10:6])
+									case(Instruction[10:6])
 										5'h00:	//sub
 											begin
 												PCSrc <= 3'b000;
@@ -348,7 +348,7 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 								end
 							6'h23:
 								begin
-									case(Instrcution[10:6])
+									case(Instruction[10:6])
 										5'h00:	//subu
 											begin
 												PCSrc <= 3'b000;
@@ -375,7 +375,7 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 								end
 							6'h24:
 								begin
-									case(Instrcution[10:6])
+									case(Instruction[10:6])
 										5'h00:	//and
 											begin
 												PCSrc <= 3'b000;
@@ -402,7 +402,7 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 								end
 							6'h25:
 								begin
-									case(Instrcution[10:6])
+									case(Instruction[10:6])
 										5'h00:	//or
 											begin
 												PCSrc <= 3'b000;
@@ -429,7 +429,7 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 								end
 							6'h26:
 								begin
-									case(Instrcution[10:6])
+									case(Instruction[10:6])
 										5'h00:	//xor
 											begin
 												PCSrc <= 3'b000;
@@ -456,7 +456,7 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 								end
 							6'h27:
 								begin
-									case(Instrcution[10:6])
+									case(Instruction[10:6])
 										5'h00:	//nor
 											begin
 												PCSrc <= 3'b000;
@@ -522,7 +522,7 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 								end
 							6'h2a:
 								begin
-									case(Instrcution[10:6])
+									case(Instruction[10:6])
 										5'h00:	//slt
 											begin
 												PCSrc <= 3'b000;
@@ -549,7 +549,7 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 								end
 							6'h2b: 
 								begin
-									case(Instrcution[10:6])
+									case(Instruction[10:6])
 										5'h00:	//sltu
 											begin
 												PCSrc <= 3'b000;
@@ -576,7 +576,7 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 								end
 							6'h08: 
 								begin
-									case(Instrcution[20:6])
+									case(Instruction[20:6])
 										15'h0:	//jr
 											begin
 												PCSrc <= 3'b011;
@@ -597,7 +597,7 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 								end
 							6'h09:
 								begin
-									if((Instrcution[10:6] == 0) && (Instrcution[15:11] == 0))
+									if((Instruction[10:6] == 0) && (Instruction[15:11] == 0))
 											//jalr
 									begin
 										PCSrc <= 3'b011;

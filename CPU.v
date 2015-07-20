@@ -81,7 +81,7 @@ module CPU(led,digi,clk,reset);
 			.EXTOp(EXTOp),
 			.LUOp(LUOp),
 			//input
-			.Instrcution(Instrcution),
+			.Instruction(Instruction),
 			.IRQ(IRQ)
 	);
 
