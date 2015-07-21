@@ -7,7 +7,6 @@ input [31:0] addr;
 input [31:0] wdata;
 input din;
 output dout;
-reg	dout;
 output [31:0] rdata;
 reg [31:0] rdata;
 
@@ -22,10 +21,10 @@ reg [31:0] TH,TL;
 reg [2:0] TCON;
 assign irqout = TCON[2];
 
-reg	[7:0]a;
-reg	[7:0]b;
+wire	[7:0]a;
+wire	[7:0]b;
 reg	[7:0]result;
-reg	ready;
+wire	ready;
 reg tx_en;
 
 always@(*) begin
@@ -40,8 +39,6 @@ always@(*) begin
 			32'h40000018: rdata <= {24'b0,a};
 			32'h4000001c: rdata <= {24'b0,b};
 			32'h40000020: rdata <= {31'b0,ready};
-			32'h40000024: rdata <= {24'b0,result};
-			32'h40000028: rdata <= {31'b0,tx_en};
 			default: rdata <= 32'b0;
 		endcase
 	end
@@ -53,7 +50,9 @@ always@(negedge reset or posedge clk) begin
 	if(~reset) begin
 		TH <= 32'b0;
 		TL <= 32'b0;
-		TCON <= 3'b0;	
+		TCON <= 3'b0;
+		result <= 8'b0;
+		tx_en <= 0;	
 	end
 	else begin
 		if(TCON[0]) begin	//timer is enabled
@@ -71,9 +70,6 @@ always@(negedge reset or posedge clk) begin
 				32'h40000008: TCON <= wdata[2:0];		
 				32'h4000000C: led <= wdata[7:0];			
 				32'h40000014: digi <= wdata[11:0];
-				32'h40000018: a <= wdata[7:0];
-				32'h4000001c: b <= wdata[7:0];
-				32'h40000020: ready <= wdata[0];
 				32'h40000024: result <= wdata[7:0];
 				32'h40000028: tx_en <= wdata[0];
 				default: ;

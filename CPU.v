@@ -4,7 +4,7 @@ module CPU(dout,led,digi,switch,din,clk,reset);
 	output	dout;
 	output	[7:0]led;
 	output	[11:0]digi;
-	output	[7:0]switch;
+	input	[7:0]switch;
 	input	din;
 	input	clk;
 	input	reset;
@@ -38,12 +38,17 @@ module CPU(dout,led,digi,switch,din,clk,reset);
 
 	wire	[31:0]Instruction;
 
-	InstructionMemorg instructionMemorg(
+	/*InstructionMemorg instructionMemorg(
 								//output
 								.Instruction(Instruction), 
 								//input
 								.PC(PC)
-	);
+	);*/
+	
+	ROM rom(
+	     .addr(PC),
+	     .data(Instruction)
+	     );
 
 	assign	JT[25:0] = Instruction[25:0];
 	wire	[15:0]Imm16;
