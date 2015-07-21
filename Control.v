@@ -39,7 +39,7 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 						RegWr <= 1;
 						ALUSrc1 <= 0;
 						ALUSrc2 <= 1;
-						ALUFun <= 000000;
+						ALUFun <= 6'b000000;
 						Sign <= 1;
 						MemWr <= 0;
 						MemRd <= 1;
@@ -53,7 +53,7 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 						RegWr <= 0;
 						ALUSrc1 <= 0;
 						ALUSrc2 <= 1;
-						ALUFun <= 000000;
+						ALUFun <= 6'b000000;
 						Sign <= 1;
 						MemWr <= 1;
 						MemRd <= 0;
@@ -70,7 +70,7 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 									RegWr <= 1;
 									ALUSrc1 <= 0;
 									ALUSrc2 <= 1;
-									ALUFun <= 000000;
+									ALUFun <= 6'b000000;
 									Sign <= 1;
 									MemWr <= 0;
 									MemRd <= 0;
@@ -95,7 +95,7 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 						RegWr <= 1;
 						ALUSrc1 <= 0;
 						ALUSrc2 <= 1;
-						ALUFun <= 000000;
+						ALUFun <= 6'b000000;
 						Sign <= 1;
 						MemWr <= 0;
 						MemRd <= 0;
@@ -110,7 +110,7 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 						RegWr <= 1;
 						ALUSrc1 <= 0;
 						ALUSrc2 <= 1;
-						ALUFun <= 000000;
+						ALUFun <= 6'b000000;
 						Sign <= 1;
 						MemWr <= 0;
 						MemRd <= 0;
@@ -125,7 +125,7 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 						RegWr <= 1;
 						ALUSrc1 <= 0;
 						ALUSrc2 <= 1;
-						ALUFun <= 011000;
+						ALUFun <= 6'b011000;
 						Sign <= 0;
 						MemWr <= 0;
 						MemRd <= 0;
@@ -140,7 +140,7 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 						RegWr <= 1;
 						ALUSrc1 <= 0;
 						ALUSrc2 <= 1;
-						ALUFun <= 110101;
+						ALUFun <= 6'b110101;
 						Sign <= 1;
 						MemWr <= 0;
 						MemRd <= 0;
@@ -155,7 +155,7 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 						RegWr <= 1;
 						ALUSrc1 <= 0;
 						ALUSrc2 <= 1;
-						ALUFun <= 110101;
+						ALUFun <= 6'b110101;
 						Sign <= 0;
 						MemWr <= 0;
 						MemRd <= 0;
@@ -183,7 +183,7 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 					begin
 						PCSrc <= 3'b001;
 						RegWr <= 0;
-						ALUFun <= 110011;
+						ALUFun <= 6'b110011;
 						ALUSrc1 <= 0;
 						ALUSrc2 <= 0;
 						MemWr <= 0;
@@ -193,7 +193,7 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 					begin
 						PCSrc <= 3'b001;
 						RegWr <= 0;
-						ALUFun <= 110001;
+						ALUFun <= 6'b110001;
 						ALUSrc1 <= 0;
 						ALUSrc2 <= 0;
 						MemWr <= 0;
@@ -206,7 +206,7 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 								begin
 									PCSrc <= 3'b001;
 									RegWr <= 0;
-									ALUFun <= 111101;
+									ALUFun <= 6'b111101;
 									ALUSrc1 <= 0;
 									ALUSrc2 <= 0;
 									MemWr <= 0;
@@ -230,7 +230,7 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 								begin
 									PCSrc <= 3'b001;
 									RegWr <= 0;
-									ALUFun <= 111111;
+									ALUFun <= 6'b111111;
 									ALUSrc1 <= 0;
 									ALUSrc2 <= 0;
 									MemWr <= 0;
@@ -254,7 +254,7 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 								begin
 									PCSrc <= 3'b001;
 									RegWr <= 0;
-									ALUFun <= 111001;
+									ALUFun <= 6'b111001;
 									ALUSrc1 <= 0;
 									ALUSrc2 <= 0;
 									MemWr <= 0;
@@ -280,11 +280,11 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 										5'h00:	//add
 											begin
 												PCSrc <= 3'b000;
-												RegDst <= 2'b01;
+												RegDst <= 2'b00;
 												RegWr <= 1;
 												ALUSrc1 <= 0;
 												ALUSrc2 <= 0;
-												ALUFun <= 000000;
+												ALUFun <= 6'b000000;
 												Sign <= 1;
 												MemWr <= 0;
 												MemRd <= 0;
@@ -307,11 +307,11 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 										5'h00:	//addu
 											begin
 												PCSrc <= 3'b000;
-												RegDst <= 2'b01;
+												RegDst <= 2'b00;
 												RegWr <= 1;
 												ALUSrc1 <= 0;
 												ALUSrc2 <= 0;
-												ALUFun <= 000000;
+												ALUFun <= 6'b000000;
 												Sign <= 1;
 												MemWr <= 0;
 												MemRd <= 0;
@@ -334,11 +334,11 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 										5'h00:	//sub
 											begin
 												PCSrc <= 3'b000;
-												RegDst <= 2'b01;
+												RegDst <= 2'b00;
 												RegWr <= 1;
 												ALUSrc1 <= 0;
 												ALUSrc2 <= 0;
-												ALUFun <= 000001;
+												ALUFun <= 6'b000001;
 												Sign <= 1;
 												MemWr <= 0;
 												MemRd <= 0;
@@ -361,11 +361,11 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 										5'h00:	//subu
 											begin
 												PCSrc <= 3'b000;
-												RegDst <= 2'b01;
+												RegDst <= 2'b00;
 												RegWr <= 1;
 												ALUSrc1 <= 0;
 												ALUSrc2 <= 0;
-												ALUFun <= 000001;
+												ALUFun <= 6'b000001;
 												Sign <= 0;
 												MemWr <= 0;
 												MemRd <= 0;
@@ -388,11 +388,11 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 										5'h00:	//and
 											begin
 												PCSrc <= 3'b000;
-												RegDst <= 2'b01;
+												RegDst <= 2'b00;
 												RegWr <= 1;
 												ALUSrc1 <= 0;
 												ALUSrc2 <= 0;
-												ALUFun <= 011000;
+												ALUFun <= 6'b011000;
 												Sign <= 0;
 												MemWr <= 0;
 												MemRd <= 0;
@@ -415,11 +415,11 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 										5'h00:	//or
 											begin
 												PCSrc <= 3'b000;
-												RegDst <= 2'b01;
+												RegDst <= 2'b00;
 												RegWr <= 1;
 												ALUSrc1 <= 0;
 												ALUSrc2 <= 0;
-												ALUFun <= 011110;
+												ALUFun <= 6'b011110;
 												Sign <= 0;
 												MemWr <= 0;
 												MemRd <= 0;
@@ -442,11 +442,11 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 										5'h00:	//xor
 											begin
 												PCSrc <= 3'b000;
-												RegDst <= 2'b01;
+												RegDst <= 2'b00;
 												RegWr <= 1;
 												ALUSrc1 <= 0;
 												ALUSrc2 <= 0;
-												ALUFun <= 010110;
+												ALUFun <= 6'b010110;
 												Sign <= 0;
 												MemWr <= 0;
 												MemRd <= 0;
@@ -469,11 +469,11 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 										5'h00:	//nor
 											begin
 												PCSrc <= 3'b000;
-												RegDst <= 2'b01;
+												RegDst <= 2'b00;
 												RegWr <= 1;
 												ALUSrc1 <= 0;
 												ALUSrc2 <= 0;
-												ALUFun <= 010001;
+												ALUFun <= 6'b010001;
 												Sign <= 0;
 												MemWr <= 0;
 												MemRd <= 0;
@@ -493,11 +493,11 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 							6'h00:	//sll
 								begin
 									PCSrc <= 3'b000;
-									RegDst <= 2'b01;
+									RegDst <= 2'b00;
 									RegWr <= 1;
 									ALUSrc1 <= 1;
 									ALUSrc2 <= 0;
-									ALUFun <= 100000;
+									ALUFun <= 6'b100000;
 									Sign <= 0;
 									MemWr <= 0;
 									MemRd <= 0;
@@ -506,11 +506,11 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 							6'h02:	//srl
 								begin
 									PCSrc <= 3'b000;
-									RegDst <= 2'b01;
+									RegDst <= 2'b00;
 									RegWr <= 1;
 									ALUSrc1 <= 1;
 									ALUSrc2 <= 0;
-									ALUFun <= 100001;
+									ALUFun <= 6'b100001;
 									Sign <= 0;
 									MemWr <= 0;
 									MemRd <= 0;
@@ -519,11 +519,11 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 							6'h03:	//sra
 								begin
 									PCSrc <= 3'b000;
-									RegDst <= 2'b01;
+									RegDst <= 2'b00;
 									RegWr <= 1;
 									ALUSrc1 <= 1;
 									ALUSrc2 <= 0;
-									ALUFun <= 100011;
+									ALUFun <= 6'b100011;
 									Sign <= 0;
 									MemWr <= 0;
 									MemRd <= 0;
@@ -535,11 +535,11 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 										5'h00:	//slt
 											begin
 												PCSrc <= 3'b000;
-												RegDst <= 2'b01;
+												RegDst <= 2'b00;
 												RegWr <= 1;
 												ALUSrc1 <= 0;
 												ALUSrc2 <= 0;
-												ALUFun <= 110101;
+												ALUFun <= 6'b110101;
 												Sign <= 0;
 												MemWr <= 0;
 												MemRd <= 0;
@@ -562,11 +562,11 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 										5'h00:	//sltu
 											begin
 												PCSrc <= 3'b000;
-												RegDst <= 2'b01;
+												RegDst <= 2'b00;
 												RegWr <= 1;
 												ALUSrc1 <= 0;
 												ALUSrc2 <= 0;
-												ALUFun <= 110101;
+												ALUFun <= 6'b110101;
 												Sign <= 0;
 												MemWr <= 0;
 												MemRd <= 0;

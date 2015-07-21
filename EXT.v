@@ -12,7 +12,7 @@ module EXT(EXTout,ConBA,Imm16,PCplus4,EXTOp,LUOp);
 	assign	upper[31:0] = {Imm16[15:0],16'b0};
 
 	wire	[31:0]expend;
-	assign	expend = ((EXTOp == 1) && (Imm16[15] == 1)) ? {16'b1,Imm16[15:0]}:
+	assign	expend = ((EXTOp == 1) && (Imm16[15] == 1)) ? {16'hffff,Imm16[15:0]}:
 					{16'b0,Imm16[15:0]};
 
 	assign	EXTout = (LUOp == 0) ? expend : upper;

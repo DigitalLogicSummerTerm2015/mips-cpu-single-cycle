@@ -140,7 +140,7 @@ module CPU(led,digi,clk,reset);
 
 	DataMem	datamem(
 			.reset(reset),
-			.clk(cllk),
+			.clk(clk),
 			.rd(MemRd),
 			.wr(MemWr),
 			.addr(ALUOut),
