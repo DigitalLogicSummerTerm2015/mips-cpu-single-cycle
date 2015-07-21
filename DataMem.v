@@ -8,7 +8,7 @@ output [31:0] rdata;
 input [31:0] wdata;
 
 parameter RAM_SIZE = 256;
-reg [31:0] RAMDATA [RAM_SIZE-1:0] = 0;
+reg [31:0] RAMDATA [RAM_SIZE-1:0];
 
 integer	i;
 initial

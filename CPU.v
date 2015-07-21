@@ -1,9 +1,11 @@
 `timescale 1ns/1ps
 
-module CPU(led,digi,switch,clk,reset);
+module CPU(dout,led,digi,switch,din,clk,reset);
+	output	dout;
 	output	[7:0]led;
 	output	[11:0]digi;
 	output	[7:0]switch;
+	input	din;
 	input	clk;
 	input	reset;
 
@@ -129,7 +131,7 @@ module CPU(led,digi,switch,clk,reset);
 	assign	ALUin1 = (ALUSrc1 == 0) ? DatabusA : {27'b0,Shamt[4:0]};
 	assign	ALUin2 = (ALUSrc2 == 0) ? DatabusB : EXTout;
 
-	ALU alu(
+	alu alu1(
 		.Z(ALUOut),
 		.A(ALUin1), 
 		.B(ALUin2), 
@@ -162,10 +164,12 @@ module CPU(led,digi,switch,clk,reset);
 			.led(led),
 			.switch(switch),
 			.digi(digi),
-			.irqout(IRQ)
+			.irqout(IRQ), 
+			.din(din), 
+			.dout(dout)
 	);
 
-	assign	readdata = (ALUOut[31:28] == 4'h0100) ? readdata2 : readdata1;
+	assign	readdata = (ALUOut[31:28] == 4'b0100) ? readdata2 : readdata1;
 
 	assign writedata = (MemToReg == 2'b00) ? ALUOut : 
 						(MemToReg == 2'b01) ? readdata : 
