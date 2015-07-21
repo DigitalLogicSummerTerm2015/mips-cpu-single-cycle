@@ -35,7 +35,7 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 				6'h23: 	//lw
 					begin
 						PCSrc <= 3'b000;
-						RegDst <= 2'b00;
+						RegDst <= 2'b01;
 						RegWr <= 1;
 						ALUSrc1 <= 0;
 						ALUSrc2 <= 1;
@@ -66,7 +66,7 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 							5'h00:	//lui
 								begin
 									PCSrc <= 3'b000;
-									RegDst <= 2'b00;
+									RegDst <= 2'b01;
 									RegWr <= 1;
 									ALUSrc1 <= 0;
 									ALUSrc2 <= 1;
@@ -91,7 +91,7 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 				6'h08:	//addi
 					begin
 						PCSrc <= 3'b000;
-						RegDst <= 2'b00;
+						RegDst <= 2'b01;
 						RegWr <= 1;
 						ALUSrc1 <= 0;
 						ALUSrc2 <= 1;
@@ -106,7 +106,7 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 				6'h09:	//addiu
 					begin
 						PCSrc <= 3'b000;
-						RegDst <= 2'b00;
+						RegDst <= 2'b01;
 						RegWr <= 1;
 						ALUSrc1 <= 0;
 						ALUSrc2 <= 1;
@@ -121,7 +121,7 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 				6'h0c:	//andi
 					begin
 						PCSrc <= 3'b000;
-						RegDst <= 2'b00;
+						RegDst <= 2'b01;
 						RegWr <= 1;
 						ALUSrc1 <= 0;
 						ALUSrc2 <= 1;
@@ -136,7 +136,7 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 				6'h0a: //slti
 					begin
 						PCSrc <= 3'b000;
-						RegDst <= 2'b00;
+						RegDst <= 2'b01;
 						RegWr <= 1;
 						ALUSrc1 <= 0;
 						ALUSrc2 <= 1;
@@ -151,7 +151,7 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 				6'h0b:	//sltiu
 					begin
 						PCSrc <= 3'b000;
-						RegDst <= 2'b00;
+						RegDst <= 2'b01;
 						RegWr <= 1;
 						ALUSrc1 <= 0;
 						ALUSrc2 <= 1;
