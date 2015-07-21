@@ -17,11 +17,10 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 	input	[31:0]Instruction;
 	input	IRQ;
 
-	// branch unfinished
 
 	always@(*)
 	begin
-		if(IRQ)	//stall
+		if(IRQ)	//interrupt
 		begin
 			PCSrc <= 3'b100;	
 			RegDst <= 2'b11;

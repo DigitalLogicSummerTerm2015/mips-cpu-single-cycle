@@ -42,6 +42,7 @@ module CPU(led,digi,clk,reset);
 								.PC(PC)
 	);
 
+	assign	JT[25:0] = Instruction[25:0];
 	wire	[15:0]Imm16;
 	assign	Imm16[15:0] = Instruction[15:0];
 	wire	[4:0]Shamt;
