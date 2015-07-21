@@ -91,7 +91,8 @@ module CPU(dout,led,digi,switch,din,clk,reset);
 			.LUOp(LUOp),
 			//input
 			.Instruction(Instruction),
-			.IRQ(IRQ)
+			.IRQ(IRQ), 
+			.supervisor(PC[31])
 	);
 
 	parameter	[4:0]Xp = 5'b11010;
