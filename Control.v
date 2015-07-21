@@ -131,7 +131,7 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 						MemWr <= 0;
 						MemRd <= 0;
 						MemToReg <= 2'b00;
-						EXTOp <= 1;
+						EXTOp <= 0;
 						LUOp <= 0;
 					end
 				6'h0a: //slti
