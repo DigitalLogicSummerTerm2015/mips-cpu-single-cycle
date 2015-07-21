@@ -1,8 +1,9 @@
 `timescale 1ns/1ps
 
-module CPU(led,digi,clk,reset);
+module CPU(led,digi,switch,clk,reset);
 	output	[7:0]led;
 	output	[11:0]digi;
+	output	[7:0]switch;
 	input	clk;
 	input	reset;
 
@@ -137,6 +138,8 @@ module CPU(led,digi,clk,reset);
 	);
 
 	wire	[31:0]readdata;
+	wire	[31:0]readdata1;
+	wire	[31:0]readdata2;
 
 	DataMem	datamem(
 			.reset(reset),
@@ -145,8 +148,24 @@ module CPU(led,digi,clk,reset);
 			.wr(MemWr),
 			.addr(ALUOut),
 			.wdata(DatabusB),
-			.rdata(readdata)
+			.rdata(readdata1)
 	);
+
+	Peripheral peripheral(
+			.reset(reset),
+			.clk(clk),
+			.rd(MemRd),
+			.wr(MemWr),
+			.addr(ALUOut),
+			.wdata(DatabusB),
+			.rdata(readdata2),
+			.led(led),
+			.switch(switch),
+			.digi(digi),
+			.irqout(IRQ)
+	);
+
+	assign	readdata = (ALUOut[31:28] == 4'h0100) ? readdata2 : readdata1;
 
 	assign writedata = (MemToReg == 2'b00) ? ALUOut : 
 						(MemToReg == 2'b01) ? readdata : 
