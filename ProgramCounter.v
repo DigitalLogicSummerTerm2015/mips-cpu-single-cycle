@@ -25,7 +25,7 @@ module ProgramCounter(PC,clk,reset,PCplus4,ConBA,JT,DatabusA,ILLOP,XADR,ALUOut,P
 			case (PCSrc[2:0])
 				0 : PC <= PCplus4;
 				1 : PC <= addr1;
-				2 : PC <= {PC[31],5'b0,JT};
+				2 : PC <= {PC[31],3'b0,JT,2'b0};
 				3 : PC <= DatabusA;
 				4 : PC <= ILLOP;
 				default : PC <= XADR;
