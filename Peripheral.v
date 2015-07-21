@@ -82,7 +82,7 @@ always@(negedge reset or posedge clk) begin
 	end
 end
 
-UART uart(
+serial_transceiver uart(
 		.dout(dout), 
 		.a(a), 
 		.b(b), 
