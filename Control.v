@@ -1,7 +1,7 @@
 `timescale 1ns/1ps
 
 module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
-	MemWr,MemRd,MemToReg,EXTOp,LUOp,Instruction,IRQ);
+	MemWr,MemRd,MemToReg,EXTOp,LUOp,Instruction,IRQ,supervisor);
 	output reg	[2:0]PCSrc;
 	output reg	[1:0]RegDst;
 	output reg	RegWr;
@@ -16,11 +16,12 @@ module Control(PCSrc,RegDst,RegWr,ALUSrc1,ALUSrc2,ALUFun,Sign,
 	output reg	LUOp;
 	input	[31:0]Instruction;
 	input	IRQ;
+	input	supervisor;
 
 
 	always@(*)
 	begin
-		if(IRQ)	//interrupt
+		if(IRQ & (~supervisor))	//interrupt
 		begin
 			PCSrc <= 3'b100;	
 			RegDst <= 2'b11;
